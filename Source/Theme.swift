@@ -4,6 +4,7 @@
 //
 
 import UIKit
+@objc
 
 enum TextCaseTransform {
     case None, Upper, Lower

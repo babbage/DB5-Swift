@@ -4,6 +4,7 @@
 //
 
 import UIKit
+@objc
 
 class ThemeLoader: NSObject {
     var defaultTheme: Theme?
