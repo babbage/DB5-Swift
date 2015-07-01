@@ -6,7 +6,7 @@
 import UIKit
 @objc
 
-enum TextCaseTransform {
+enum TextCaseTransform : Int8 {
     case None, Upper, Lower
 }
 
