@@ -13,7 +13,7 @@ func stringIsEmpty(s: String?) -> Bool {
     if s == nil {
         return true
     }
-    return count(s!) == 0
+    return s!.characters.count == 0
 }
 
 // Picky. Crashes by design.
@@ -22,7 +22,7 @@ func colorWithHexString(hexString: String?) -> UIColor {
         return UIColor.blackColor()
     }
     var s: NSMutableString = NSMutableString(string: hexString!)
-    s.replaceOccurrencesOfString("#", withString: "", options: NSStringCompareOptions.CaseInsensitiveSearch, range: NSMakeRange(0, count(hexString!)))
+    s.replaceOccurrencesOfString("#", withString: "", options: NSStringCompareOptions.CaseInsensitiveSearch, range: NSMakeRange(0, hexString!.characters.count))
     CFStringTrimWhitespace(s)
     let redString = s.substringToIndex(2)
     let greenString = s.substringWithRange(NSMakeRange(2, 2))
