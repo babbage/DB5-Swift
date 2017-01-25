@@ -11,14 +11,14 @@ class ThemeLoader: NSObject {
     var themes: [Theme]
 
     init(themeFilename filename: String) {
-        let themesFilePath = NSBundle.mainBundle().pathForResource(filename, ofType: "plist")
+        let themesFilePath = Bundle.main.path(forResource: filename, ofType: "plist")
         let themesDictionary = NSDictionary(contentsOfFile: themesFilePath!)!
         themes = [Theme]()
         for oneKey in themesDictionary.allKeys {
             let key = oneKey as! String
             let themeDictionary = themesDictionary[key] as! NSDictionary
             let theme = Theme(fromDictionary: themeDictionary)
-            if key.lowercaseString == "default" {
+            if key.lowercased() == "default" {
                 defaultTheme = theme
             }
             theme.name = key
@@ -31,7 +31,7 @@ class ThemeLoader: NSObject {
         }
     }
 
-    func themeNamed(themeName: String) -> Theme? {
+    func themeNamed(_ themeName: String) -> Theme? {
         for oneTheme in themes {
             if themeName == oneTheme.name {
                 return oneTheme
